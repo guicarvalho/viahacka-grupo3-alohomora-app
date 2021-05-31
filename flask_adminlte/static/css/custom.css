@@ -1,0 +1,117 @@
+/* Header */
+.skin-blue .main-header .navbar {
+  background-color: #6071EA;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+  background-color: #0DC9C7;
+}
+
+.skin-blue .main-header .logo {
+  background-color: #6071EA;
+}
+
+.skin-blue .main-header .logo:hover {
+  background-color: #0DC9C7;
+}
+
+/* Sidebar */
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+  background-color: #041216;
+}
+
+.skin-blue .sidebar-menu > li:hover > a {
+  background-color: #0DC9C7; 
+}
+
+.skin-blue .sidebar-menu > li.active > a {
+  background-color: #6071EA;
+}
+
+/* Modal login */
+.bg-light-blue, .navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+  background-color: #041216 !important;
+}
+
+/* Classificação vendedor */
+.ouro {
+  color: gold;
+}
+
+.prata {
+  color: silver;
+}
+
+.bronze {
+  color: coral;
+}
+
+/* Login */
+.login-logo {
+  color: white;
+}
+
+.login-page, .register-page {
+  background-color: #6071EA;
+}
+
+.btn-primary {
+  background-color: #0DC9C7;
+  border-color: #0DC9C7;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+ background-color: #6071EA;
+  border-color: #6071EA;
+} 
+
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #0DC9C7;
+  border-color: #0DC9C7;
+}
+
+/* Boxes */
+.bg-box-primary, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #0DC9C7 !important;
+  color: white;
+}
+
+.bg-box-secondary, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #6071EA !important;
+  color: white;
+}
+
+.bg-box-thirdy, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #6071EA !important;
+  color: white;
+}
+
+/* Breadcrumb */
+a.breadcrumb-link,
+a.breadcrumb-link:hover,
+a.breadcrumb-link:active,
+a.breadcrumb-link:visited {
+  color: #6071EA;
+}
+
+/* Table */
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  border-top: none;
+}
+
+.box-body-compare-sku {
+  background-color: #041216;
+  color: white;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+  font-weight: bold;
+}

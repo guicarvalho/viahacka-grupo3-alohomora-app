@@ -1,0 +1,137 @@
+{% extends "adminlte/base.html" %}
+{% import "adminlte/layout.html" as layout with context %}
+
+{% block navbar %}
+  <!-- Sidebar toggle button-->
+  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </a>
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <li class="dropdown notifications-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-bell-o"></i>
+          <span class="label label-danger">{{ combo_sugestions_total }}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">Você tem {{ combo_sugestions_total }} notificações</li>
+          <li>
+            <!-- inner menu: contains the actual data -->
+            <ul class="menu">
+              <li>
+                {% for combo in combo_sugestions %}
+                <a href="#" data-toggle="tooltip" data-placement="left" title="Oferte o combo: {{ combo.produto_1 }} + {{ combo.produto_2 }}">
+                  <i class="fa fa-users" style="color: #0DC9C7;"></i> Oferte o combo: {{ combo.produto_1 }} + {{ combo.produto_2 }}
+                </a>
+                {% endfor %}
+              </li>
+            </ul>
+          </li>
+          <li class="footer">
+            <a href="#">Visualizar todas notificações</a>
+          </li>
+        </ul>
+      </li>
+      <!-- User Account: style can be found in dropdown.less -->
+      <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <img src="/static/img/user2-160x160.jpg" class="user-image" alt="User Image">
+          <span class="hidden-xs">{{ current_user }}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <!-- User image -->
+          <li class="user-header bg-light-blue">
+            <img src="/static/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+            <p>
+              {{ current_user }}
+              <small>Membro desde 21 de março de 2019</small>
+            </p>
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <div class="pull-right">
+              <a href="{{ url_for('seller.logout') }}" class="btn btn-danger btn-flat">Sair</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+{%- endblock navbar %}
+{% block sidebar -%}
+  <!-- sidebar: style can be found in sidebar.less -->
+  <!-- sidebar menu: : style can be found in sidebar.less -->
+  <div class="user-panel">
+    <div class="pull-left image">
+      <img src="/static/img/user2-160x160.jpg" alt="User Image" class="img-circle">
+    </div>
+    <div class="pull-left info">
+      <p>{{ current_user }}</p>
+      <a href="#">
+        <i class="fa fa-lg fa-trophy ouro"></i>
+        Vendedor Ouro
+      </a>
+    </div>
+  </div>
+  <ul class="sidebar-menu">
+    <li>
+      <a href="{{ url_for('seller.index') }}">
+        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+      </a>
+      <li class="active">
+        <a href="{{ url_for('seller.compare_skus') }}">
+          <i class="fa fa-dollar"></i> <span>Comparador de preços</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('seller.notifications') }}">
+          <i class="fa fa-bell"></i> <span>Notificações</span>
+        </a>
+      </li>
+    </li>
+  </ul>
+<!-- /.sidebar -->
+{%- endblock sidebar %}
+{% block content_header -%}
+  <div>
+    <ol class="breadcrumb">
+      <li><a href="{{ url_for('seller.index') }}" class="breadcrumb-link"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Comparador de preços</li>
+    </ol>
+  </div>  
+{%- endblock content_header %}
+{% block content %}
+<div class=row>
+  <div class="col-md-12">
+    <div class="box" style="border-top: 0;">
+      <div class="box-body-compare-sku">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">SKU</th>
+              <th scope="col">Preço ofertado</th>
+              <th scope="col">Valor médio Via</th>
+              <th scope="col">Diferença</th>
+              <th scope="col">Disponibilidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for value in values_sku_seller %}
+            <tr>
+              <td>{{ value.id_sku }}</td>
+              <td>{{ "$%.2f"|format(value.preco_venda|float) }}</td>
+              <td>{{ "$%.2f"|format(value.valor_via|float) }}</td>
+              <td class="{{ 'red' if value.diferenca|float >= 0 else 'green' }}">{{ value.diferenca|float }}%</td>
+              <td>{{ value.estoque_disponivel }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
